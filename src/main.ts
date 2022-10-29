@@ -19,7 +19,7 @@ import "./style.css"
       wrapper.setAttribute("data-transition-state", "hide")
       setTimeout(() => {
         wrapper.setAttribute("data-transition-state", "show")
-      }, 500)
+      }, 600)
     })
 
     Transition.init(wrapper, wrapper)

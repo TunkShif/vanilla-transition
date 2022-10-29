@@ -69,7 +69,6 @@ const doTransition = (el: HTMLElement, state: "show" | "hide", props: Transition
     el.style.display = ""
   }
 
-  el.classList.remove(...base, ...from, ...to)
   el.classList.add(...base, ...from)
 
   requestAnimationFrame(() => {
