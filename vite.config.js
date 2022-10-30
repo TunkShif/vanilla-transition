@@ -4,6 +4,7 @@ import { defineConfig } from "vite"
 export default defineConfig(({ mode }) => {
   if (mode === "production") {
     return {
+      publicDir: false,
       build: {
         lib: {
           entry: resolve(__dirname, "src/transition.ts"),
