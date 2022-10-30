@@ -1,8 +1,26 @@
 {
-  "name": "vanilla-transition",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "@tunkshif/vanilla-transition",
+  "description": "Vanilla Transition enables you to easily create transitions.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/TunkShif/vanilla-transition",
+  "author": "Tristan Yang <tunkshif@foxmail.com>",
+  "license": "MIT",
+  "module": "./dist/vanilla-transition.js",
+  "unpkg": "./dist/vanilla-transition.umd.cjs",
+  "jsdelivr": "./dist/vanilla-transition.umd.cjs",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "transition"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TunkShif/vanilla-transition.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TunkShif/vanilla-transition/issues"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

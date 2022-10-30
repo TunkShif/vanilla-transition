@@ -124,8 +124,18 @@ const init = (el: HTMLElement, observing: HTMLElement, options?: TransitionOptio
   return () => observer.disconnect()
 }
 
-const Transition = {
+const VanillaTransition = {
   init
 }
 
-export default Transition
+export default VanillaTransition
+
+declare global {
+  interface Window {
+    VanillaTransition: typeof VanillaTransition
+  }
+}
+
+if (typeof window !== "undefined") {
+  window.VanillaTransition = VanillaTransition
+}

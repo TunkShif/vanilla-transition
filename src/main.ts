@@ -1,4 +1,4 @@
-import Transition from "./transition"
+import VanillaTransition from "./transition"
 import "./style.css"
   ; (() => {
     const button = document.querySelector<HTMLButtonElement>("#button-0")!
@@ -9,7 +9,7 @@ import "./style.css"
       wrapper.dataset.transitionState = state === "show" ? "hide" : "show"
     })
 
-    Transition.init(wrapper, wrapper)
+    VanillaTransition.init(wrapper, wrapper)
   })()
   ; (() => {
     const button = document.querySelector<HTMLButtonElement>("#button-1")!
@@ -22,7 +22,7 @@ import "./style.css"
       }, 600)
     })
 
-    Transition.init(wrapper, wrapper)
+    VanillaTransition.init(wrapper, wrapper)
   })()
   ; (() => {
     const button = document.querySelector<HTMLButtonElement>("#button-2")!
@@ -35,7 +35,7 @@ import "./style.css"
       wrapper.dataset.transitionState = state === "show" ? "hide" : "show"
     })
 
-    Transition.init(textDisplay, wrapper)
+    VanillaTransition.init(textDisplay, wrapper)
 
     const observer = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
@@ -66,6 +66,6 @@ import "./style.css"
       attribute: "data-modal-state"
     }
 
-    Transition.init(modalOverlay, modal, config)
-    Transition.init(modalContent, modal, config)
+    VanillaTransition.init(modalOverlay, modal, config)
+    VanillaTransition.init(modalContent, modal, config)
   })()
