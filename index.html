@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Vanilla Transition</title>
   </head>
 
   <body class="min-h-screen">
     <main class="max-w-5xl mx-auto py-12 px-16">
       <h2 class="mb-8 text-2xl font-medium">Vanilla Transition</h2>
-      <section class="mb-4 border border-slate-500 rounded-md p-4">
+
+      <h3 class="mb-2 font-medium">Simple Example</h3>
+      <section class="mb-4 min-w-max border border-slate-500 rounded-md p-4">
         <button
           id="button-0"
           class="px-3 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-medium rounded-md shadow-lg"
@@ -31,7 +33,9 @@
           👋 Hi, there!
         </div>
       </section>
-      <section class="mb-4 border border-slate-500 rounded-md p-4">
+
+      <h3 class="mb-2 font-medium">Resetting State</h3>
+      <section class="mb-4 min-w-max border border-slate-500 rounded-md p-4">
         <div class="flex flex-col items-center">
           <div class="h-32 w-32">
             <div
@@ -52,6 +56,82 @@
           >
             Transition
           </button>
+        </div>
+      </section>
+
+      <h3 class="mb-2 font-medium">Observing on Other Element</h3>
+      <section class="mb-4 min-w-max border border-slate-500 rounded-md p-4">
+        <button
+          id="button-2"
+          class="px-3 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-medium rounded-md shadow-lg"
+        >
+          Toggle
+        </button>
+        <div id="transition-wrapper-2" data-transition-state="hide" class="my-2 font-medium">
+          State: <span id="text-0">hide</span>
+        </div>
+        <div
+          id="text-1"
+          data-enter="transition-opacity duration-300"
+          data-enter-from="opacity-0"
+          data-enter-to="opacity-100"
+          data-leave="transition-opacity duration-300"
+          data-leave-from="opacity-100"
+          data-leave-to="opacity-0"
+        >
+          Hello, World!
+        </div>
+      </section>
+
+      <h3 class="mb-2 font-medium">Modal Example</h3>
+      <section class="mb-4 min-w-max border border-slate-500 rounded-md p-4">
+        <button
+          id="button-3"
+          class="px-3 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-medium rounded-md shadow-lg"
+        >
+          Open Modal
+        </button>
+        <div id="modal" data-modal-state="hide">
+          <div
+            id="modal-overlay"
+            class="fixed inset-0 z-30 bg-black/60"
+            data-enter="ease-out duration-300"
+            data-enter-from="opacity-0"
+            data-enter-to="opacity-100"
+            data-leave="ease-in duration-200"
+            data-leave-from="opacity-100"
+            data-leave-to="opacity-0"
+          ></div>
+          <div
+            id="modal-content"
+            class="fixed z-50 max-w-md rounded-lg p-4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white"
+            data-enter="ease-out duration-300"
+            data-enter-from="opacity-0 scale-95 translate-y-[15%]"
+            data-enter-to="opacity-100 scale-100 -translate-y-1/2"
+            data-leave="ease-in duration-200"
+            data-leave-from="opacity-100 scale-100 -translate-y-1/2"
+            data-leave-to="opacity-0 scale-95 translate-y-[15%]"
+          >
+            <h2 class="text-lg font-medium text-slate-900">I'm a Modal</h2>
+            <p class="my-4 text-md text-slate-800">
+              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint
+              consectetur cupidatat.
+            </p>
+            <div class="flex justify-end">
+              <button
+                data-modal-close
+                class="px-3 py-2 bg-red-500 hover:bg-red-600 text-white font-medium rounded-md shadow-lg"
+              >
+                Cancel
+              </button>
+            </div>
+            <button
+              data-modal-close
+              class="absolute top-3 right-3 text-slate-600 hover:text-slate-900"
+            >
+              &times;
+            </button>
+          </div>
         </div>
       </section>
     </main>

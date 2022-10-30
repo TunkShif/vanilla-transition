@@ -26,12 +26,12 @@ type TransitionOptions = {
 
 const getProperties = (el: HTMLElement) => {
   return {
-    enter: el.getAttribute("data-enter"),
-    enterFrom: el.getAttribute("data-enter-from"),
-    enterTo: el.getAttribute("data-enter-to"),
-    leave: el.getAttribute("data-leave"),
-    leaveFrom: el.getAttribute("data-leave-from"),
-    leaveTo: el.getAttribute("data-leave-to")
+    enter: el.dataset.enter,
+    enterFrom: el.dataset.enterFrom,
+    enterTo: el.dataset.enterTo,
+    leave: el.dataset.leave,
+    leaveFrom: el.dataset.leaveFrom,
+    leaveTo: el.dataset.leaveTo
   } as TransitionProperties
 }
 
@@ -87,7 +87,7 @@ const doTransition = (el: HTMLElement, state: "show" | "hide", props: Transition
   })
 }
 
-export const init = (wrapper: HTMLElement, observing: HTMLElement, options?: TransitionOptions) => {
+const init = (el: HTMLElement, observing: HTMLElement, options?: TransitionOptions) => {
   const opts = Object.assign(
     {
       attribute: "data-transition-state",
@@ -100,12 +100,12 @@ export const init = (wrapper: HTMLElement, observing: HTMLElement, options?: Tra
   )
 
   const state = observing.getAttribute(opts.attribute)
-  const props = getProperties(wrapper)
+  const props = getProperties(el)
 
   if (state === opts.states.hide) {
-    wrapper.style.display = "none"
+    el.style.display = "none"
   } else {
-    wrapper.style.display = ""
+    el.style.display = ""
   }
 
   const observer = new MutationObserver((mutations) => {
@@ -114,12 +114,18 @@ export const init = (wrapper: HTMLElement, observing: HTMLElement, options?: Tra
         const mutatedState =
           observing.getAttribute(opts.attribute)! === opts.states.show ? "show" : "hide"
 
-        doTransition(wrapper, mutatedState, props)
+        doTransition(el, mutatedState, props)
       }
     }
   })
 
-  observer.observe(wrapper, { attributes: true })
+  observer.observe(observing, { attributes: true })
 
   return () => observer.disconnect()
 }
+
+const Transition = {
+  init
+}
+
+export default Transition
