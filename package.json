@@ -1,11 +1,11 @@
 {
   "name": "@tunkshif/vanilla-transition",
   "description": "Vanilla Transition enables you to easily create transitions.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/TunkShif/vanilla-transition",
   "author": "Tristan Yang <tunkshif@foxmail.com>",
   "license": "MIT",
-  "module": "./dist/vanilla-transition.js",
+  "module": "./dist/vanilla-transition.mjs",
   "unpkg": "./dist/vanilla-transition.umd.cjs",
   "jsdelivr": "./dist/vanilla-transition.umd.cjs",
   "files": [
