@@ -87,7 +87,7 @@ const doTransition = (el: HTMLElement, state: "show" | "hide", props: Transition
   })
 }
 
-const init = (el: HTMLElement, observing: HTMLElement, options?: TransitionOptions) => {
+export const init = (el: HTMLElement, observing: HTMLElement, options?: TransitionOptions) => {
   const opts = Object.assign(
     {
       attribute: "data-transition-state",
@@ -122,20 +122,4 @@ const init = (el: HTMLElement, observing: HTMLElement, options?: TransitionOptio
   observer.observe(observing, { attributes: true })
 
   return () => observer.disconnect()
-}
-
-const VanillaTransition = {
-  init
-}
-
-export default VanillaTransition
-
-declare global {
-  interface Window {
-    VanillaTransition: typeof VanillaTransition
-  }
-}
-
-if (typeof window !== "undefined") {
-  window.VanillaTransition = VanillaTransition
 }
