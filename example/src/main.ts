@@ -1,4 +1,4 @@
-import VanillaTransition from "./transition"
+import VanillaTransition from "@tunkshif/vanilla-transition"
 import "./style.css"
   ; (() => {
     const button = document.querySelector<HTMLButtonElement>("#button-0")!
