@@ -1,17 +1,35 @@
-import { init } from "./transition"
+import { doTransition } from "./transition";
+import type { TransitionOptions } from "./types";
 
-const VanillaTransition = {
-  init
-}
+export const createTransitionObserever = (
+  el: HTMLElement,
+  observing: HTMLElement,
+  options: TransitionOptions
+) => {
+  if (!observing.hasAttribute(options.attribute)) return;
 
-export default VanillaTransition
+  const currentStage = () => observing.getAttribute(options.attribute) || "";
 
-declare global {
-  interface Window {
-    VanillaTransition: typeof VanillaTransition
+  if (currentStage() === options.stages.leave) {
+    el.style.display = "none";
+  } else {
+    el.style.display = "";
   }
-}
 
-if (typeof window !== "undefined") {
-  window.VanillaTransition = VanillaTransition
-}
+  const observer = new MutationObserver(mutations => {
+    for (const mutation of mutations) {
+      if (mutation.attributeName === options.attribute) {
+        const nextStage = currentStage() === options.stages.leave ? "leave" : "enter";
+
+        doTransition(el, nextStage, options.classes);
+      }
+    }
+  });
+
+  observer.observe(observing, { attributes: true });
+
+  return () => observer.disconnect();
+};
+
+export { doTransition } from "./transition";
+export * from "./types";

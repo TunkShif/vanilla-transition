@@ -22,7 +22,7 @@
         <div
           id="transition-wrapper-0"
           class="mt-2"
-          data-transition-state="hide"
+          data-ui-state=""
           data-enter="transition-opacity duration-300"
           data-enter-from="opacity-0"
           data-enter-to="opacity-100"
@@ -41,7 +41,7 @@
             <div
               id="transition-wrapper-1"
               class="h-full w-full bg-indigo-500 rounded-md shadow-lg"
-              data-transition-state="show"
+              data-ui-state="show"
               data-enter="transform transition duration-[400ms]"
               data-enter-from="opacity-0 rotate-[-120deg] scale-50"
               data-enter-to="opacity-100 rotate-0 scale-100"
@@ -67,7 +67,7 @@
         >
           Toggle
         </button>
-        <div id="transition-wrapper-2" data-transition-state="hide" class="my-2 font-medium">
+        <div id="transition-wrapper-2" data-text-state="" class="my-2 font-medium">
           State: <span id="text-0">hide</span>
         </div>
         <div
@@ -91,7 +91,7 @@
         >
           Open Modal
         </button>
-        <div id="modal" data-modal-state="hide">
+        <div id="modal" data-ui-state="">
           <div
             id="modal-overlay"
             class="fixed inset-0 z-30 bg-black/60"
